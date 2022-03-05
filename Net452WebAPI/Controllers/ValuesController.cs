@@ -10,10 +10,16 @@ namespace Net452WebAPI.Controllers
 {
     public class ValuesController : ApiController
     {
+        private readonly IValuesService valuesService;
+
+        public ValuesController(IValuesService valuesService)
+        {
+            this.valuesService = valuesService;
+        }
+
         // GET api/values
         public IEnumerable<string> Get()
         {
-            IValuesService valuesService = new ValuesService();
             return valuesService.GetValueList();
         }
 
