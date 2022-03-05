@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Net452Library;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -12,7 +13,8 @@ namespace Net452WebAPI.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            IValuesService valuesService = new ValuesService();
+            return valuesService.GetValueList();
         }
 
         // GET api/values/5
