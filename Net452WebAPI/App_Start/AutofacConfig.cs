@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Http;
+using Utility.Logging.NLog.Autofac;
 
 namespace Net452WebAPI
 {
@@ -27,6 +28,9 @@ namespace Net452WebAPI
         {
             //取得目前正在執行之程式碼的組件
             Assembly assembly = Assembly.GetExecutingAssembly();
+
+            //註冊 NLog
+            builder.RegisterModule(new NLogLoggerAutofacModule());
 
             //註冊 API controller
             builder.RegisterApiControllers(assembly);

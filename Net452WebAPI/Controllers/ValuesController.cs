@@ -1,21 +1,22 @@
 ﻿using Net452Library;
-using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Utility.Logging;
 
 namespace Net452WebAPI.Controllers
 {
     public class ValuesController : ApiController
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        private readonly ILogger logger;
         private readonly IValuesService valuesService;
 
-        public ValuesController(IValuesService valuesService)
+        public ValuesController(ILogger logger ,IValuesService valuesService)
         {
+            this.logger = logger;
             this.valuesService = valuesService;
         }
 

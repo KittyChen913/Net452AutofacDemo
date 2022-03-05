@@ -1,14 +1,15 @@
-﻿using NLog;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Utility.Logging;
 
 namespace Net452Library
 {
     public class ValuesService : IValuesService
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        private readonly ILogger logger;
 
-        public ValuesService()
+        public ValuesService(ILogger logger)
         {
+            this.logger = logger;
         }
 
         public List<string> GetValueList()
