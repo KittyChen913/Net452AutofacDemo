@@ -1,4 +1,5 @@
 ﻿using Net452Library;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Net452WebAPI.Controllers
 {
     public class ValuesController : ApiController
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
         private readonly IValuesService valuesService;
 
         public ValuesController(IValuesService valuesService)
@@ -20,6 +22,10 @@ namespace Net452WebAPI.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
+            logger.Debug("我是Debug");
+            logger.Info("我是Info");
+            logger.Error("我是Error");
+
             return valuesService.GetValueList();
         }
 
